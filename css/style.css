@@ -1,0 +1,353 @@
+/*
+Text font
+*/
+@font-face {
+    font-family: 'Biko';
+    src: url('../fonts/Biko_Regular.otf');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Biko';
+    src: url('../fonts/Biko_Bold.otf');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Biko';
+    src: url('../fonts/Biko_Light-Restricted.otf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'Biko';
+    src: url('../fonts/Biko_Black.otf');
+    font-weight: 900;
+}
+
+/*
+  Flaticon icon font: Flaticon
+  Creation date: 19/11/2016 13:44
+  */
+
+@font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.eot");
+    src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Flaticon.woff") format("woff"),
+    url("../fonts/Flaticon.ttf") format("truetype"),
+    url("../fonts/Flaticon.svg#Flaticon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family: "Flaticon";
+        src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+    }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-size: 20px;
+    font-style: normal;
+}
+
+.flaticon-cancel:before { content: "\f100"; }
+.flaticon-heart:before { content: "\f101"; }
+.flaticon-magnifying-glass:before { content: "\f102"; }
+.flaticon-magnifying-glass-1:before { content: "\f103"; }
+.flaticon-navigation:before { content: "\f104"; }
+.flaticon-search:before { content: "\f105"; }
+.flaticon-umbrella:before { content: "\f106"; }
+
+/* Weather icons */
+@font-face {
+    font-family: 'MeteoconsRegular';
+    src: url('../fonts/meteocons-webfont.eot');
+    src: url('../fonts/meteocons-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/meteocons-webfont.woff') format('woff'),
+    url('../fonts/meteocons-webfont.ttf') format('truetype'),
+    url('../fonts/meteocons-webfont.svg#MeteoconsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+*{
+    transition: all 2s ease;
+}
+body{
+    font-family: Biko;
+    position: relative;
+    background-color: #FF7070;
+    color: white;
+    margin: 0px;
+    transition: background-color 1s ease;
+}
+
+.loader{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    flex-direction: column;
+    background-color: #FF7070;
+    z-index: 5;
+}
+.loader > .text {
+    padding-top: 35px;
+}
+body.result{
+    background-color: #a970ff;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); }
+}
+
+.loader > img.middle{
+    position: absolute;
+    top: 40vh;
+    width: 88px;
+    transition:all 3s ease;
+}
+.loader > img.top{
+    top: 40px;
+    width: 50px;
+}
+.loader > img.rotate{
+    transform-origin: bottom center;
+    -webkit-animation: spin 3s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
+    -moz-animation: spin 3s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
+    animation: spin 3s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
+}
+
+.holy-logo{
+    height: 25px;
+    width: 24px;
+    background-image: url(../img/holy-logo.jpg);
+    position: absolute;
+    bottom: 35px;
+}
+form.main-form{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.main-form label{
+    font-size: 24px;
+    font-weight: normal;
+    padding-bottom: 22px;
+}
+.main-form input{
+    border: 3px solid transparent;
+    background-color: #a86ffe;
+    font-size: 21px;
+    width: 300px;
+    padding: 12px 15px;
+    font-family: Biko;
+    margin-bottom: 40px;
+    outline: 0px;
+    color: white;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
+}
+.main-form input::-webkit-input-placeholder {
+    color: #d4b8ff;
+}
+.main-form input:-moz-placeholder { /* Firefox 18- */
+    color: #d4b8ff;
+}
+.main-form input::-moz-placeholder {  /* Firefox 19+ */
+    color: #d4b8ff;
+}
+.main-form input:-ms-input-placeholder {
+    color: #d4b8ff;
+}
+.main-form input[type="text"]:focus {
+    color: #a86ffe;
+    border: 3px dashed #a86ffe;
+    background: white;
+}
+.main-form > button.location{
+    font-family: Biko;
+    border: 0px;
+    background-color: #70ff91;
+    color: #a86ffe;
+    font-size: 24px;
+    padding: 13px 25px 14px 70px;
+    position: relative;
+}
+
+.main-form input, .main-form > button.location{
+    -webkit-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.3);
+}
+.flaticon-navigation{
+    position: absolute;
+    left: 25px;
+}
+.flaticon-navigation:before{
+    font-size: 30px;
+}
+.flaticon-search:before{
+    font-size: 28px;
+    font-weight: bold;
+    color: #a86ffe;
+}
+.main-form button.search{
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    background: white;
+    border: 0px;
+    padding: 4px 6px;
+}
+.logo{
+    height: 55px;
+    width: 50px;
+    position: fixed;
+    left: 50%;
+    top: 35px;
+    background: url(../img/umbrella.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+}
+/* Burger menu styling */
+.menu{
+    position: fixed;
+    padding: 10px;
+    top: 35px;
+    left: 25px;
+    z-index: 3;
+    cursor: pointer;
+}
+#burger-menu {
+    width: 40px;
+    height: 28px;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+#burger-menu span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #70ff91;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+#burger-menu span:nth-child(1) {
+    top: 0px;
+}
+
+#burger-menu span:nth-child(2),#burger-menu span:nth-child(3) {
+    top: 10px;
+}
+
+#burger-menu span:nth-child(4) {
+    top: 21px;
+}
+
+#burger-menu.open span:nth-child(1) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+}
+#burger-menu.open span{
+    background: #a86ffe;
+}
+#burger-menu.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#burger-menu.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#burger-menu.open span:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+}
+/* Sidebar menu */
+.sidebar {
+    position: fixed;
+    left: -380px;
+    width: 380px;
+    background: #6ffe90;
+    height: 100vh;
+    transition-duration: 0.5s;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-left: 40px;
+    padding-bottom: 100px;
+}
+.sidebar.open{
+    left: 0px;
+}
+.info {
+    font-size: 41px;
+    width: 80px;
+    margin-bottom: 100px;
+}
+.links {
+    display: flex;
+    flex-direction: column;
+}
+.links .line{
+    height: 4px;
+    background: #a86ffe;
+    width: 40px;
+    margin-bottom: 25px;
+}
+.links > a {
+    color: #a86ffe;
+    text-decoration: none;
+    display: inline;
+    font-size: 41px;
+    margin-left: -10px;
+}
+.links > a > span{
+    transition-duration: 0.5s;
+    padding: 5px 10px;
+    display: inline-block;
+}
+.links > a > span:hover{
+    color: white;
+    background: #a86ffe;
+}
