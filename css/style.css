@@ -52,13 +52,16 @@ Text font
     font-style: normal;
 }
 
-.flaticon-cancel:before { content: "\f100"; }
-.flaticon-heart:before { content: "\f101"; }
-.flaticon-magnifying-glass:before { content: "\f102"; }
-.flaticon-magnifying-glass-1:before { content: "\f103"; }
-.flaticon-navigation:before { content: "\f104"; }
-.flaticon-search:before { content: "\f105"; }
-.flaticon-umbrella:before { content: "\f106"; }
+.flaticon-twitter:before { content: "\f100"; }
+.flaticon-cancel:before { content: "\f101"; }
+.flaticon-facebook:before { content: "\f102"; }
+.flaticon-heart:before { content: "\f103"; }
+.flaticon-magnifying-glass:before { content: "\f104"; }
+.flaticon-magnifying-glass-1:before { content: "\f105"; }
+.flaticon-navigation:before { content: "\f106"; }
+.flaticon-search:before { content: "\f107"; }
+.flaticon-google:before { content: "\f108"; }
+.flaticon-umbrella:before { content: "\f109"; }
 
 /* Weather icons */
 @font-face {
@@ -350,4 +353,42 @@ form.main-form{
 .links > a > span:hover{
     color: white;
     background: #a86ffe;
+}
+.social-share{
+    position: fixed;
+    bottom: 100px;
+    font-size: 25px;
+    color: #a86ffe;
+}
+.social-icons{
+    margin-top: 25px;
+    margin-left: -13px;
+}
+.social-icons .flaticon-facebook,
+.social-icons .flaticon-twitter,
+.social-icons .flaticon-google{
+    /*margin-right: 15px;*/
+    transition-duration: 0.5s;
+}
+.social-icons .flaticon-facebook:before,
+.social-icons .flaticon-twitter:before,
+.social-icons .flaticon-google:before{
+    font-size: 30px;
+    color: #a86ffe;
+    transition-duration: 0.5s;
+}
+.social-icons > a{
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: 6px 7px 4px;
+    margin-right: 6px;
+    transition-duration: 0.5s;
+}
+.social-icons > a:hover{
+    background: #a86ffe;
+    color: white;
+}
+.social-icons > a:hover i:before{
+    color: white;
 }
