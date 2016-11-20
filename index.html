@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<div class="loader">
+<div class="loader hidden">
     <img class="rotate" src="img/umbrella-color.png" title="umbrellapp logo">
 
     <div class="text">umbrellapp</div>
@@ -68,12 +68,79 @@
         <form class="main-form">
             <label>type a location:</label>
             <div style="position: relative">
-                <input type="text" placeholder="type here...">
-                <button type="button" class="search"><span class="flaticon-search"></span></button>
+                <input type="text" name="cityName" placeholder="type here...">
+                <button type="submit" name="cityName" class="search"><span class="flaticon-search"></span></button>
             </div>
             <label>or give us your location</label>
             <button type="button" class="location"><span class="flaticon-navigation"></span>access location</button>
         </form>
+        <div class="forecast hidden">
+            <div class="favs">
+                <span class="text">Add to Favourites</span><i class="flaticon-heart"></i>
+            </div>
+            <div class="today weather day-forecast">
+                <div class="day-label">TODAY</div>
+                <div class="city-info"><span class="city-name">Athens</span>, <span class="country-code">GR</span> </div>
+                <div class="weather-icon" meteocons="Y"></div>
+                <div class="temp">
+                    <div class="highest"><span class="temp-text">14</span><span> &degC</span></div>
+                    <div class="lowest"><span class="temp-text">14</span><span> &degC</span></div>
+                </div>
+            </div>
+            <div class="restdays weather">
+                <div class="day-forecast">
+                    <div class="day-label">TUE</div>
+                    <div class="weather-icon" meteocons="R"></div>
+                    <div class="temp">
+                        <div class="highest"><span class="temp-text">14</span><span> &degC</span></div>
+                        <div class="lowest"><span class="temp-text">14</span><span> &degC</span></div>
+                    </div>
+                </div>
+                <div class="day-forecast">
+                    <div class="day-label">WED</div>
+                    <div class="weather-icon" meteocons="H"></div>
+                    <div class="temp">
+                        <div class="highest"><span class="temp-text">14</span><span> &degC</span></div>
+                        <div class="lowest"><span class="temp-text">14</span><span> &degC</span></div>
+                    </div>
+                </div>
+                <div class="day-forecast">
+                    <div class="day-label">THU</div>
+                    <div class="weather-icon" meteocons="B"></div>
+                    <div class="temp">
+                        <div class="highest"><span class="temp-text">14</span><span> &degC</span></div>
+                        <div class="lowest"><span class="temp-text">14</span><span> &degC</span></div>
+                    </div>
+                </div>
+                <div class="day-forecast">
+                    <div class="day-label">FRI</div>
+                    <div class="weather-icon" meteocons="Y"></div>
+                    <div class="temp">
+                        <div class="highest"><span class="temp-text">14</span><span> &degC</span></div>
+                        <div class="lowest"><span class="temp-text">14</span><span> &degC</span></div>
+                    </div>
+                </div>
+                <div class="day-forecast">
+                    <div class="day-label">SAT</div>
+                    <div class="weather-icon" meteocons="H"></div>
+                    <div class="temp">
+                        <div class="highest"><span class="temp-text">14</span><span> &degC</span></div>
+                        <div class="lowest"><span class="temp-text">14</span><span> &degC</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="error hidden">
+            <div class="face">
+                <i class="flaticon-sad"></i>
+            </div>
+            <div class="text">An error occurred, please try again</div>
+            <div class="refresh">
+                <a href="./index.html">
+                    <i class="flaticon-round-arrow"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 </body>

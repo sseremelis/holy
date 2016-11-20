@@ -59,9 +59,11 @@ Text font
 .flaticon-magnifying-glass:before { content: "\f104"; }
 .flaticon-magnifying-glass-1:before { content: "\f105"; }
 .flaticon-navigation:before { content: "\f106"; }
-.flaticon-search:before { content: "\f107"; }
-.flaticon-google:before { content: "\f108"; }
-.flaticon-umbrella:before { content: "\f109"; }
+.flaticon-round-arrow:before { content: "\f107"; }
+.flaticon-sad:before { content: "\f108"; }
+.flaticon-search:before { content: "\f109"; }
+.flaticon-google:before { content: "\f10a"; }
+.flaticon-umbrella:before { content: "\f10b"; }
 
 /* Weather icons */
 @font-face {
@@ -73,10 +75,13 @@ Text font
     url('../fonts/meteocons-webfont.svg#MeteoconsRegular') format('svg');
     font-weight: normal;
     font-style: normal;
-
+}
+[meteocons]:before{
+    font-family: 'MeteoconsRegular';
+    content: attr(meteocons);
 }
 *{
-    transition: all 2s ease;
+    transition: all 1s ease;
 }
 body{
     font-family: Biko;
@@ -97,7 +102,10 @@ body{
     font-size: 25px;
     flex-direction: column;
     background-color: #FF7070;
-    z-index: 5;
+    z-index: 10;
+}
+.loader.hidden{
+    display: none;
 }
 .loader > .text {
     padding-top: 35px;
@@ -150,7 +158,7 @@ form.main-form{
 }
 .main-form input{
     border: 3px solid transparent;
-    background-color: #a86ffe;
+    background-color: #a970ff;
     font-size: 21px;
     width: 300px;
     padding: 12px 15px;
@@ -173,24 +181,24 @@ form.main-form{
     color: #d4b8ff;
 }
 .main-form input[type="text"]:focus {
-    color: #a86ffe;
-    border: 3px dashed #a86ffe;
+    color: #a970ff;
+    border: 3px dashed #a970ff;
     background: white;
 }
 .main-form > button.location{
     font-family: Biko;
     border: 0px;
     background-color: #70ff91;
-    color: #a86ffe;
+    color: #a970ff;
     font-size: 24px;
     padding: 13px 25px 14px 70px;
     position: relative;
 }
 
 .main-form input, .main-form > button.location{
-    -webkit-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.5);
 }
 .flaticon-navigation{
     position: absolute;
@@ -202,7 +210,7 @@ form.main-form{
 .flaticon-search:before{
     font-size: 28px;
     font-weight: bold;
-    color: #a86ffe;
+    color: #a970ff;
 }
 .main-form button.search{
     position: absolute;
@@ -211,8 +219,10 @@ form.main-form{
     background: white;
     border: 0px;
     padding: 4px 6px;
+    cursor: pointer;
 }
 .logo{
+    z-index: 9;
     height: 55px;
     width: 50px;
     position: fixed;
@@ -283,7 +293,7 @@ form.main-form{
     left: 50%;
 }
 #burger-menu.open span{
-    background: #a86ffe;
+    background: #a970ff;
 }
 #burger-menu.open span:nth-child(2) {
     -webkit-transform: rotate(45deg);
@@ -334,12 +344,12 @@ form.main-form{
 }
 .links .line{
     height: 4px;
-    background: #a86ffe;
+    background: #a970ff;
     width: 40px;
     margin-bottom: 25px;
 }
 .links > a {
-    color: #a86ffe;
+    color: #a970ff;
     text-decoration: none;
     display: inline;
     font-size: 41px;
@@ -352,13 +362,13 @@ form.main-form{
 }
 .links > a > span:hover{
     color: white;
-    background: #a86ffe;
+    background: #a970ff;
 }
 .social-share{
     position: fixed;
     bottom: 100px;
     font-size: 25px;
-    color: #a86ffe;
+    color: #a970ff;
 }
 .social-icons{
     margin-top: 25px;
@@ -374,7 +384,7 @@ form.main-form{
 .social-icons .flaticon-twitter:before,
 .social-icons .flaticon-google:before{
     font-size: 30px;
-    color: #a86ffe;
+    color: #a970ff;
     transition-duration: 0.5s;
 }
 .social-icons > a{
@@ -386,9 +396,97 @@ form.main-form{
     transition-duration: 0.5s;
 }
 .social-icons > a:hover{
-    background: #a86ffe;
+    background: #a970ff;
     color: white;
 }
 .social-icons > a:hover i:before{
     color: white;
+}
+
+/* Forecast results*/
+.forecast, .error{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #a970ff;
+    text-align: center;
+    font-size: 25px;
+    opacity: 1;
+}
+.forecast.hidden , .error.hidden{
+    display: none;
+    opacity: 0;
+}
+.today.weather > .day-label{
+    font-size: 25px;
+    letter-spacing: 1px;
+    color: rgba(112,255,145,0.65);
+}
+.city-name{
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+.weather-icon{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.today.weather > .weather-icon:before{
+    font-size: 165px;
+}
+.today.weather >.temp{
+    font-size: 30px;
+    padding-top: 20px;
+}
+.temp > .highest{
+    color: #70ff91;
+}
+.temp > .lowest{
+    color: rgba(112,255,145,0.65);
+}
+.restdays {
+    display: flex;
+    width: 660px;
+    justify-content: space-around;
+    padding-top: 150px;
+}
+.restdays .day-label{
+    font-size: 20px;
+}
+.restdays .weather-icon:before {
+    font-size: 65px;
+}
+.restdays .temp{
+    font-size: 20px;
+}
+.error > .face > i:before{
+    font-size: 30px;
+}
+.error > .refresh > a{
+    text-decoration: none;
+    color: inherit;
+}
+.error > .refresh > a > i:before{
+    font-size: 45px;
+}
+.error > .text{
+    padding: 15px 0px 40px;
+}
+.favs {
+    position: fixed;
+    top: 35px;
+    right: 60px;
+    font-size: 17px;
+    cursor: pointer;
+}
+.favs .flaticon-heart:before{
+    font-size: 35px;
+}
+.favs .flaticon-heart{
+    position: relative;
+    top: 7px;
+    padding-left: 15px;
 }
