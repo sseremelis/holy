@@ -97,10 +97,15 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex;
     justify-content: center;
     align-items: center;
     font-size: 25px;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
     background-color: #FF7070;
     z-index: 10;
 }
@@ -130,6 +135,9 @@ body.result{
 }
 .loader > img.rotate{
     transform-origin: bottom center;
+    -moz-transform-origin: bottom center;
+    -o-transform-origin: bottom center;
+    transform-origin: bottom center;
     -webkit-animation: spin 3s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
     -moz-animation: spin 3s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
     animation: spin 3s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
@@ -147,8 +155,15 @@ form.main-form{
     width: 100vw;
     position: fixed;
     display: flex;
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex;
     justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
     align-items: center;
 }
 .main-form label{
@@ -163,7 +178,6 @@ form.main-form{
     width: 300px;
     padding: 12px 15px;
     font-family: Biko;
-    margin-bottom: 40px;
     outline: 0px;
     color: white;
     transition: background 0.5s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
@@ -193,12 +207,21 @@ form.main-form{
     font-size: 24px;
     padding: 13px 25px 14px 70px;
     position: relative;
+    cursor: pointer;
 }
 
 .main-form input, .main-form > button.location{
     -webkit-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 5px 50px -13px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+
+.main-form div:hover > input, .main-form > button.location:hover{
+    box-shadow: 0px 5px 50px -4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 5px 50px -4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 5px 50px -4px rgba(0, 0, 0, 0.5);
 }
 .flaticon-navigation{
     position: absolute;
@@ -232,6 +255,9 @@ form.main-form{
     background-size: contain;
     background-repeat: no-repeat;
     transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
 }
 /* Burger menu styling */
 .menu{
@@ -324,8 +350,15 @@ form.main-form{
     transition-duration: 0.5s;
     z-index: 2;
     display: flex;
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
     justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
     box-sizing: border-box;
     padding-left: 40px;
     padding-bottom: 100px;
@@ -340,7 +373,12 @@ form.main-form{
 }
 .links {
     display: flex;
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
 }
 .links .line{
     height: 4px;
@@ -409,8 +447,15 @@ form.main-form{
     width: 100vw;
     position: fixed;
     display: flex;
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex;
     justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
     align-items: center;
     background: #a970ff;
     text-align: center;
@@ -449,8 +494,13 @@ form.main-form{
 }
 .restdays {
     display: flex;
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex;
     width: 660px;
     justify-content: space-around;
+    -moz-justify-content: space-around;
+    -webkit-justify-content: space-around;
     padding-top: 150px;
 }
 .restdays .day-label{
@@ -489,4 +539,66 @@ form.main-form{
     position: relative;
     top: 7px;
     padding-left: 15px;
+}
+.pac-container{
+    width: 335px !important;
+    border-radius: 0px;
+    font-family: Biko;
+    letter-spacing: 1px;
+    border: 3px dashed #a970ff;
+    border-top: 0px;
+}
+.pac-item{
+    border-bottom: 1px dashed #a970ff;
+    font-size: 13px !important;
+    border-top: 0px;
+}
+.pac-logo:after {
+    margin-right: 8px;
+    padding: 4px !important;
+}
+
+@media (max-width: 767px){
+    .sidebar{
+        z-index: 10;
+    }
+    .menu{
+        z-index: 11;
+    }
+    .info{
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+    .social-share{
+        bottom: 4vh;
+    }
+    .links .line{
+        margin-bottom: 10px;
+    }
+    .links > a > span{
+        padding: 0px 10px;
+    }
+    .today.weather > .weather-icon:before {
+        font-size: 115px;
+    }
+    .restdays .weather-icon:before {
+        font-size: 40px;
+    }
+    .restdays{
+        width: 100vw;
+        padding-top: 55px;
+    }
+    .today.weather {
+        margin-top: 60px;
+    }
+    .weather-icon {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .favs > .text{
+        display: none;
+    }
+    .favs {
+        right: 40px;
+    }
 }

@@ -32,6 +32,7 @@ weekday[3] = "WED";
 weekday[4] = "THU";
 weekday[5] = "FRI";
 weekday[6] = "SAT";
+formattedAddress = '';
 
 function hideLoader(){
     $('.loader').css({
@@ -49,6 +50,24 @@ $(document).ready(function(){
     $('body').on("animationend MSAnimationEnd webkitAnimationEnd oAnimationEnd", function(){
        console.log('end');
     });
+
+    $('#cityNameInput').geocomplete({
+        details: '.main-form'
+    }).bind("geocode:result", function(event, result){
+        formattedAddress = result.address_components[0].long_name +','+result.address_components[result.address_components.length-1].short_name;
+        console.log(formattedAddress);
+    }).bind("geocode:error",function(){
+        console.log('Error with autocomplete');
+    });
+
+//    $("#cityNameInput").keypress(function (e) {
+//        var key = e.which;
+//        if(key == 13){  // the enter key code
+//            console.log('hello');
+//            $('#cityNameSubmit').click();
+//            return false;
+//        }
+//    });
 //    setTimeout(function(){
 //        $('.loader').css({
 //            opacity: 0
@@ -77,12 +96,7 @@ $(document).ready(function(){
         $(this).customerPopup(e);
     });
 
-    $('.main-form').on('submit', function(e){
-        e.preventDefault();
-        showLoader();
-        $('input').blur();
-        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='+$('input[name="cityName"]').val()+
-            '&mode=json&units=metric&cnt=6&appid='+apiKey;
+    function weatherAjax(url){
         $.ajax({
             url: url
         }).done(function(result){
@@ -143,12 +157,68 @@ $(document).ready(function(){
             });
             $('.forecast').removeClass('hidden');
         }).fail(function(){
-              $('.error').removeClass('hidden');
+            $('.error').removeClass('hidden');
         }).always(function(){
             setTimeout(function(){
                 hideLoader();
             },2000);
         });
+    }
+
+    function showGeolocationError(error) {
+        e.preventDefault();
+        $('input').blur();
+        showLoader();
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+    $('#locationSubmit').on('click',function(e){
+        showLoader();
+        if (navigator.geolocation) {
+
+            navigator.geolocation.getCurrentPosition(function(location){
+                console.log('all well');
+                console.log(location.coords.latitude);
+                console.log(location.coords.longitude);
+                    var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat='+parseFloat(location.coords.latitude)+
+                        '&lon='+parseFloat(location.coords.longitude)+'&mode=json&units=metric&cnt=6&appid='+apiKey;
+                    console.log(url);
+                    weatherAjax(url);
+            },function(){
+                    showGeolocationError();
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser.");
+            $('.error > .text').text('Geolocation is not supported by this browser, please try Firefox');
+            hideLoader();
+        }
+    });
+
+    $('#cityNameSubmit').on('click', function(e){
+        $('input').blur();
+        showLoader();
+        e.preventDefault();
+        if (formattedAddress ==''){
+            formattedAddress = $('#cityNameInput').val();
+        }
+        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='+formattedAddress+
+            '&mode=json&units=metric&cnt=6&appid='+apiKey;
+        console.log(url);
+        weatherAjax(url);
+
     });
 
 });

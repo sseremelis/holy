@@ -9,6 +9,10 @@
     <!--Project files-->
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- google info for autocomplete -->
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <!-- autocomplete plugin -->
+    <script src="js/jquery.geocomplete.min.js"></script>
     <script src="js/global.js"></script>
 
 </head>
@@ -67,12 +71,12 @@
     <div class="main-content">
         <form class="main-form">
             <label>type a location:</label>
-            <div style="position: relative">
-                <input type="text" name="cityName" placeholder="type here...">
-                <button type="submit" name="cityName" class="search"><span class="flaticon-search"></span></button>
+            <div style="position: relative; margin-bottom: 40px">
+                <input type="text" name="formatted_address" data-geo="formatted_address" id="cityNameInput" placeholder="type here...">
+                <button type="submit" name="cityName" class="search" id="cityNameSubmit"><span class="flaticon-search"></span></button>
             </div>
             <label>or give us your location</label>
-            <button type="button" class="location"><span class="flaticon-navigation"></span>access location</button>
+            <button type="button" class="location" id="locationSubmit"><span class="flaticon-navigation"></span>access location</button>
         </form>
         <div class="forecast hidden">
             <div class="favs">
