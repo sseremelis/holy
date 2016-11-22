@@ -249,15 +249,31 @@ form.main-form{
     height: 55px;
     width: 50px;
     position: fixed;
-    left: 50%;
+    left: 48vw;
     top: 35px;
     background: url(../img/umbrella.png);
     background-size: contain;
     background-repeat: no-repeat;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
+    /*transform: translateX(-50%);*/
+    /*-webkit-transform: translateX(-50%);*/
+    /*-ms-transform: translateX(-50%);*/
+    /*-o-transform: translateX(-50%);*/
+
+    transform-origin: bottom center;
+    -moz-transform-origin: bottom center;
+    -o-transform-origin: bottom center;
+    transform-origin: bottom center;
+
+    -webkit-animation: spin 2s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
+    -moz-animation: spin 2s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
+    animation: spin 2s cubic-bezier(0.54, -0.08, 0, 1.15) infinite;
+
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+}
+.logo:hover{
+    animation-play-state: running;
+    -webkit-animation-play-state: running;
 }
 /* Burger menu styling */
 .menu{
@@ -601,4 +617,54 @@ form.main-form{
     .favs {
         right: 40px;
     }
+    .heart-full{
+        right: 39px;
+    }
+}
+
+.heart-full{
+    height: 31px;
+    width: 36px;
+    opacity: 0;
+    background-image: url(../img/heart-full.jpg);
+    position: fixed;
+    right: 59px;
+    top: 45px;
+    display: block;
+}
+.favs:hover .heart-full{
+    opacity: 1;
+}
+#popup{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(169, 112, 255, 0.85);
+    z-index: 9999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+#popup.hidden{
+    display: none;
+    opacity: 0;
+}
+.popup-content{
+    text-align: center;
+    display: flex;
+    width: 90vw;
+    height: 79vh;
+    background: #a970ff;
+    justify-content: center;
+    font-size: 25px;
+    flex-direction: column;
+}
+.pCity{
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+.pMessage{
+    margin-bottom: 15px;
 }

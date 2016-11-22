@@ -221,6 +221,20 @@ $(document).ready(function(){
 
     });
 
+    $('.favs').on('click',function(e){
+        console.log('here');
+        $('.popup-content .pCity').text($('.city-name').text()+', '+$('.country-code').text());
+        $('.favs > .heart-full').css('opacity','1');
+        $('.favs > .text').text('Added to favourites');
+        $(this).css('pointer-events','none');
+        $('#popup').removeClass('hidden').css('opacity','1');
+        setTimeout(function(e){
+            $('#popup').css('opacity', '0').bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+                $(this).addClass('hidden');
+            });;
+        },3000);
+    });
+
 });
 
 $(window).on('load',function(){
